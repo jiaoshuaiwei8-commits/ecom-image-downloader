@@ -1,0 +1,45 @@
+{
+  "manifest_version": 3,
+  "name": "电商图片提取下载器",
+  "version": "1.0.0",
+  "description": "在淘宝 / 天猫 / 京东 / 拼多多商家版的商品详情页一键提取所有图片，勾选后批量下载为 PNG。",
+  "minimum_chrome_version": "110",
+  "permissions": ["activeTab", "scripting", "downloads", "storage"],
+  "host_permissions": [
+    "*://item.taobao.com/*",
+    "*://detail.tmall.com/*",
+    "*://chaoshi.detail.tmall.com/*",
+    "*://world.tmall.com/*",
+    "*://item.jd.com/*",
+    "*://item.jd.hk/*",
+    "*://npcitem.jd.hk/*",
+    "*://mms.pinduoduo.com/*",
+    "*://*.alicdn.com/*",
+    "*://*.taobaocdn.com/*",
+    "*://*.tbcdn.cn/*",
+    "*://*.360buyimg.com/*",
+    "*://*.jdimg.com/*",
+    "*://*.pddpic.com/*",
+    "*://*.yangkeduo.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://item.taobao.com/*",
+        "*://detail.tmall.com/*",
+        "*://chaoshi.detail.tmall.com/*",
+        "*://world.tmall.com/*",
+        "*://item.jd.com/*",
+        "*://item.jd.hk/*",
+        "*://npcitem.jd.hk/*",
+        "*://mms.pinduoduo.com/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ]
+}

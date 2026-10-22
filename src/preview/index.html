@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>图片提取结果</title>
+  </head>
+  <body>
+    <div class="app">
+      <header class="toolbar">
+        <div class="heading">
+          <h1>图片提取结果</h1>
+          <p class="subtitle" id="subtitle">加载中…</p>
+        </div>
+
+        <div class="controls">
+          <div class="seg" role="group" aria-label="批量选择">
+            <button type="button" data-act="all">全选</button>
+            <button type="button" data-act="none">全不选</button>
+            <button type="button" data-act="invert">反选</button>
+          </div>
+
+          <label class="field">
+            <span>最小尺寸</span>
+            <select id="filter-size">
+              <option value="0">不限</option>
+              <option value="400">≥ 400px</option>
+              <option value="800">≥ 800px</option>
+              <option value="1200">≥ 1200px</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>来源</span>
+            <select id="filter-source">
+              <option value="all">全部</option>
+              <option value="img">img</option>
+              <option value="lazy">懒加载属性</option>
+              <option value="srcset">srcset</option>
+              <option value="picture">picture</option>
+              <option value="background">背景图</option>
+              <option value="iframe">iframe</option>
+            </select>
+          </label>
+
+          <label class="switch">
+            <input type="checkbox" id="opt-white" />
+            <span>透明背景压白</span>
+          </label>
+        </div>
+      </header>
+
+      <main class="content">
+        <div class="empty" id="empty" hidden>
+          <h2>还没有采集结果</h2>
+          <p>回到商品详情页，点击右下角的「获取图片」按钮。</p>
+        </div>
+        <div class="grid" id="grid"></div>
+        <div class="empty" id="no-match" hidden>
+          <h2>当前筛选没有匹配的图片</h2>
+          <p>试试把「最小尺寸」调小，或把「来源」切回全部。</p>
+        </div>
+      </main>
+
+      <footer class="bottombar">
+        <div class="status">
+          <strong id="selected-count">已选 0 张</strong>
+          <span id="progress-text"></span>
+        </div>
+
+        <div class="progress" id="progress" hidden>
+          <div class="bar" id="progress-bar"></div>
+        </div>
+
+        <div class="footer-actions">
+          <button type="button" class="btn ghost" id="retry" hidden>重试失败项</button>
+          <button type="button" class="btn ghost" id="zip">打包下载 ZIP</button>
+          <button type="button" class="btn primary" id="download">下载为 PNG</button>
+        </div>
+      </footer>
+    </div>
+
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>
